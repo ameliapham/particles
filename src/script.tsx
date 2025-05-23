@@ -14,6 +14,9 @@ const scene = new THREE.Scene();
 const axesHelper = new THREE.AxesHelper(2)
 scene.add(axesHelper)
 
+// --- Texture ---
+const textureLoader = new THREE.TextureLoader()
+
 // --- Camera Setup ---
 const camera = new THREE.PerspectiveCamera(75,window.innerWidth / window.innerHeight);
 camera.position.z = 3
