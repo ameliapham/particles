@@ -19,7 +19,15 @@ const textureLoader = new THREE.TextureLoader()
 
 // --- Particles ---
 // Geometry
-const particlesGeometry = new THREE.SphereGeometry(1, 32, 32)
+const particlesGeometry = new THREE.BufferGeometry()
+const points = 5000
+
+const positionArray = new Float32Array(points * 3) // Multiply by 3 because each position is composed of 3 values (x, y, z)
+for(let i = 0; i < points * 3; i++ ){
+    positionArray[i] = (Math.random() - 0.5) * 10
+}
+const positionAttribute = new THREE.BufferAttribute(positionArray, 3)
+particlesGeometry.setAttribute('position', positionAttribute)
 
 // Material
 const particlesMaterial = new THREE.PointsMaterial({
@@ -30,7 +38,6 @@ const particlesMaterial = new THREE.PointsMaterial({
 // Points
 const particles = new THREE.Points(particlesGeometry, particlesMaterial)
 scene.add(particles)
-
 
 // --- Camera Setup ---
 const camera = new THREE.PerspectiveCamera(75,window.innerWidth / window.innerHeight);
