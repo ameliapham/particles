@@ -17,6 +17,21 @@ scene.add(axesHelper)
 // --- Texture ---
 const textureLoader = new THREE.TextureLoader()
 
+// --- Particles ---
+// Geometry
+const particlesGeometry = new THREE.SphereGeometry(1, 32, 32)
+
+// Material
+const particlesMaterial = new THREE.PointsMaterial({
+    size : 0.02,
+    sizeAttenuation: true
+})
+
+// Points
+const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+scene.add(particles)
+
+
 // --- Camera Setup ---
 const camera = new THREE.PerspectiveCamera(75,window.innerWidth / window.innerHeight);
 camera.position.z = 3
