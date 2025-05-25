@@ -11,11 +11,12 @@ const canvas = document.querySelector("canvas.webgl") as HTMLCanvasElement;
 const scene = new THREE.Scene();
 
 // --- Setup Axes Helper ---
-const axesHelper = new THREE.AxesHelper(2)
-scene.add(axesHelper)
+// const axesHelper = new THREE.AxesHelper(2)
+// scene.add(axesHelper)
 
 // --- Texture ---
 const textureLoader = new THREE.TextureLoader()
+const particlesTexture = textureLoader.load('textures/2.png')
 
 // --- Particles ---
 // Geometry
@@ -31,9 +32,23 @@ particlesGeometry.setAttribute('position', positionAttribute)
 
 // Material
 const particlesMaterial = new THREE.PointsMaterial({
-    size : 0.02,
-    sizeAttenuation: true
+    size : 0.1, // Size of point
+    sizeAttenuation: true, //Depth near/far between points
+    color : 0xff88cc, 
+    map : particlesTexture,
+    transparent: true, 
+    alphaMap: particlesTexture, //Use particlesTexture as transparency mask
+    //alphaTest: 0.001, //If the opacity of a point is less than 0.001, it will not be drawn.
+    //depthTest: false, //Not hidden by other objects
+    depthWrite: false //Does not affect the depth of the scene
 })
+
+// --- Object ---
+const cube = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({color: "white"})
+)
+scene.add(cube)
 
 // Points
 const particles = new THREE.Points(particlesGeometry, particlesMaterial)
