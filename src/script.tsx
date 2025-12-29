@@ -24,8 +24,8 @@ const particlesGeometry = new THREE.BufferGeometry()
 const points = 5000
 
 const positionArray = new Float32Array(points * 3) // Multiply by 3 because each position is composed of 3 values (x, y, z)
-for(let i = 0; i < points * 3; i++ ){
-    positionArray[i] = (Math.random() - 0.5) * 10
+for(let i = 0; i < points * 3; i++){
+    positionArray[i] = (Math.random() - 0.5) * 10 //Random between -0.5 and 0.5, then scale to 10
 }
 const positionAttribute = new THREE.BufferAttribute(positionArray, 3)
 particlesGeometry.setAttribute('position', positionAttribute)
@@ -48,7 +48,7 @@ const cube = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshBasicMaterial({color: "white"})
 )
-scene.add(cube)
+//scene.add(cube)
 
 // Points
 const particles = new THREE.Points(particlesGeometry, particlesMaterial)
@@ -66,7 +66,7 @@ controls.enableDamping = true
 // --- Renderer Setup ---
 const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)) //Limit pixel ratio to 2 for performance
 
 // --- Debug UI ---
 const gui = new GUI
