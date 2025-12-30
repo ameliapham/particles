@@ -16,7 +16,7 @@ const scene = new THREE.Scene();
 
 // --- Texture ---
 const textureLoader = new THREE.TextureLoader()
-const particlesTexture = textureLoader.load('textures/2.png')
+const particlesTexture = textureLoader.load('textures/1.png')
 
 // --- Particles ---
 // Geometry
@@ -89,6 +89,10 @@ window.addEventListener("resize", () => {
 
 // --- Render Loop ---
 const clock = new THREE.Clock()
+const waveConfig = {
+    frequency: 3,
+    speed: 1.5
+}
 
 function animate(){
     // Clock
@@ -98,7 +102,7 @@ function animate(){
     for (let i = 0; i < points; i++){
         const i3 = i * 3
         const x = particlesGeometry.attributes.position.array[i3]
-        particlesGeometry.attributes.position.array[i3 + 1] = Math.sin(elapsedTime + x) * 0.5 //Update y position with sine wave based on time and x position
+        particlesGeometry.attributes.position.array[i3 + 1] = Math.sin(elapsedTime * waveConfig.speed + x * waveConfig.frequency) * 0.5 //Update y position with sine wave based on time and x position 
     }
     particlesGeometry.attributes.position.needsUpdate = true //Notify Three.js that positions have changed
     //particles.rotation.y = elapsedTime * 0.2
