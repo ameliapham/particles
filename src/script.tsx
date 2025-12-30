@@ -94,6 +94,9 @@ function animate(){
     // Clock
     const elapsedTime = clock.getElapsedTime()
 
+    // Update particles
+    particles.rotation.y = elapsedTime * 0.2
+
     // Update control
     controls.update()
 
