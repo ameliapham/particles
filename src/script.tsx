@@ -24,11 +24,17 @@ const particlesGeometry = new THREE.BufferGeometry()
 const points = 5000
 
 const positionArray = new Float32Array(points * 3) // Multiply by 3 because each position is composed of 3 values (x, y, z)
+const colorArray = new Float32Array(points * 3)
+
 for(let i = 0; i < points * 3; i++){
     positionArray[i] = (Math.random() - 0.5) * 10 //Random between -0.5 and 0.5, then scale to 10
+    colorArray[i] = Math.random()
 }
 const positionAttribute = new THREE.BufferAttribute(positionArray, 3)
 particlesGeometry.setAttribute('position', positionAttribute)
+
+const colorAttribute = new THREE.BufferAttribute(colorArray, 3)
+particlesGeometry.setAttribute('color', colorAttribute)
 
 // Material
 const particlesMaterial = new THREE.PointsMaterial({
@@ -42,7 +48,7 @@ const particlesMaterial = new THREE.PointsMaterial({
     //depthTest: false, //Not hidden by other objects
     depthWrite: false, //Does not affect the depth of the scene
     blending: THREE.AdditiveBlending, //Add color values together to create a glow effect
-
+    vertexColors: true //Use color from geometry
 })
 
 // --- Object ---
