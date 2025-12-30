@@ -91,7 +91,8 @@ window.addEventListener("resize", () => {
 const clock = new THREE.Clock()
 const waveConfig = {
     frequency: 3,
-    speed: 1.5
+    speed: 1.5,
+    amplitude: 0.5
 }
 
 function animate(){
@@ -102,7 +103,7 @@ function animate(){
     for (let i = 0; i < points; i++){
         const i3 = i * 3
         const x = particlesGeometry.attributes.position.array[i3]
-        particlesGeometry.attributes.position.array[i3 + 1] = Math.sin(elapsedTime * waveConfig.speed + x * waveConfig.frequency) * 0.5 //Update y position with sine wave based on time and x position 
+        particlesGeometry.attributes.position.array[i3 + 1] = Math.sin(elapsedTime * waveConfig.speed + x * waveConfig.frequency) * waveConfig.amplitude //Update y position with sine wave based on time and x position 
     }
     particlesGeometry.attributes.position.needsUpdate = true //Notify Three.js that positions have changed
     //particles.rotation.y = elapsedTime * 0.2
