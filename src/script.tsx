@@ -97,7 +97,7 @@ function animate(){
     // Update particles
     for (let i = 0; i < points; i++){
         const i3 = i * 3
-        particlesGeometry.attributes.position.array[i3] = Math.sin(elapsedTime + i) * 0.5 // Update x position with sine wave
+        particlesGeometry.attributes.position.array[i3 + 1] = Math.sin(elapsedTime + i) * 0.5 // Update y position with sine wave
     }
     particlesGeometry.attributes.position.needsUpdate = true //Notify Three.js that positions have changed
     //particles.rotation.y = elapsedTime * 0.2
