@@ -1,4 +1,4 @@
-# Wavep Prticles
+# Wave Particles
 
 A small Three.js learning project focused on creating a particle system using `BufferGeometry` and animating it as a wave over time.
 
