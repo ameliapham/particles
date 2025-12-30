@@ -36,11 +36,13 @@ const particlesMaterial = new THREE.PointsMaterial({
     sizeAttenuation: true, //Depth near/far between points
     color : 0xff88cc, 
     map : particlesTexture,
-    transparent: true, 
+    transparent: true, //Enable transparency
     alphaMap: particlesTexture, //Use particlesTexture as transparency mask
     //alphaTest: 0.001, //If the opacity of a point is less than 0.001, it will not be drawn.
     //depthTest: false, //Not hidden by other objects
-    depthWrite: false //Does not affect the depth of the scene
+    depthWrite: false, //Does not affect the depth of the scene
+    blending: THREE.AdditiveBlending, //Add color values together to create a glow effect
+
 })
 
 // --- Object ---
