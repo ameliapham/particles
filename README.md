@@ -1,3 +1,5 @@
+<img width="1884" height="916" alt="Screenshot 2025-12-31 at 01 31 00" src="https://github.com/user-attachments/assets/646bc7ad-41e4-42f4-b2a3-fa52f4b3a89a" />
+
 # Wave Particles
 
 A small Three.js learning project focused on creating a particle system using `BufferGeometry` and animating it as a wave over time.
